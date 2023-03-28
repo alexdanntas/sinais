@@ -16,3 +16,33 @@ bin-release/
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
+import time
+import telegram
+
+# Insira o token de acesso do seu bot aqui
+bot_token = 'seu_token_de_acesso'
+
+# Insira o ID do grupo aqui
+group_id = 'id_do_grupo'
+
+# Define o horário dos sinais
+sinais_horarios = ['12:35', '12:45', '12:55']
+
+# Cria uma instância do bot
+bot = telegram.Bot(token=bot_token)
+
+# Loop para enviar os sinais com antecedência de 10 minutos
+for horario in sinais_horarios:
+    # Define a mensagem para o sinal atual
+    mensagem = f"ENTRADA CONFIRMADA\n🎰FORTUNE MOUSE🐱\nℹ️ DICA!\nEntre sempre com delay de 5 segundos.\nSINAL\n⏰{horario}\nTenha sempre gerenciamento de banca\nOs sinais tem uma Acertividade de 93%\nBOA SORTE 🍀"
+
+    # Calcula o horário com antecedência de 10 minutos
+    horario_envio = (time.strptime(horario, '%H:%M'))
+    horario_envio = time.mktime(horario_envio) - (10*60)
+    horario_envio = time.strftime('%H:%M', time.localtime(horario_envio))
+
+    # Envia a mensagem para o grupo com antecedência de 10 minutos
+    bot.send_message(chat_id=group_id, text=f"⏰ {horario_envio}\n{mensagem}")
+
+    # Espera 5 segundos
+    time.sleep(5)
