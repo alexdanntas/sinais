@@ -20,10 +20,10 @@ import time
 import telegram
 
 # Insira o token de acesso do seu bot aqui
-bot_token = 'seu_token_de_acesso'
+bot_token = '5916831695:AAGIRJcuZaOD6VbZ66bGblOyoeICvkAi9Mk'
 
 # Insira o ID do grupo aqui
-group_id = 'id_do_grupo'
+group_id ='https://t.me/fortalslot'
 
 # Define o horário dos sinais
 sinais_horarios = ['12:35', '12:45', '12:55']
